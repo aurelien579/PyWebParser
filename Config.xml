@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<models>
+	<model name="T411Torrent" url="http://www.t411.io/torrents/.*" >
+		<field name="seeders" type="int" parser="SimpleFieldParser" xpath="//div[contains(@class, 'details')]//td[contains(@class, 'up')]/strong/text()" />
+	</model>
+</models>
