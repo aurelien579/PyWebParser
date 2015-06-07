@@ -16,4 +16,15 @@
 			<field type="str" name="name" parser="SimpleField" xpath="//article/div[1]" />
 		</model>
 	</page>
+
+	<page url="http://www.imdb.com/title/.*">
+		<model name="ImdbMovieInfo">
+			<field type="str" name="title" parser="SimpleField" xpath="//span[contains(@itemprop, 'name')]" />
+			<field type="Genre" name="genres" parser="ListField" xpath="//div[contains(@class, 'infobar')]" xpath_iter="a">
+				<model name="Genre">
+					<field type="str" name="name" parser="SimpleField" xpath="span"/>
+				</model>
+			</field>
+		</model>
+	</page>
 </pages>
