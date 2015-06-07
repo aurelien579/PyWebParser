@@ -1,7 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<pages>
+	<page url="https://www.t411.io/torrents/search/.*">	
+		<model name="T411SearchResult">
+			<field type="T411SearchTorrent" name="torrents" parser="ListField" xpath="//table[contains(@class, 'results')]/tbody" xpath_iter="tr">
+				<model name="T411SearchTorrent">
+					<field type="str" name="name" parser="SimpleField" xpath="td[2]/a[1]"/>
+					<field type="int" name="seeders" parser="SimpleField" xpath="td[8]/text()"/>
+					<field type="int" name="leechers" parser="SimpleField" xpath="td[9]/text()"/>
+				</model>
+			</field>
+		</model>
+	</page>
 
-<models>
-	<model name="T411Torrent" url="http://www.t411.io/torrents/.*" >
-		<field name="seeders" type="int" parser="SimpleFieldParser" xpath="//div[contains(@class, 'details')]//td[contains(@class, 'up')]/strong/text()" />
-	</model>
-</models>
+	<page url="http://www.t411.io/torrents/.*">
+		<model name="T411TorrentInfo">
+			<field type="str" name="name" parser="SimpleField" xpath="//article/div[1]" />
+		</model>
+	</page>
+</pages>

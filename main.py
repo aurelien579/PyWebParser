@@ -1,9 +1,8 @@
-from config import Config
-from core import Parser
+from core import Parser, Config
 
 if __name__ == '__main__':
-    config = Config('Config.xml')
-    parser = Parser(config)
-    result = parser.parse('http://www.t411.io/torrents/buddy-guy-the-real-deal-live-1996-flac-blues')
-    
-    print(result)
+	config = Config('Config.xml')
+	parser = Parser(config)
+	t = parser.parse('http://www.t411.io/torrents/beethoven-derniers-quatuors--cordes-borodin-quartet-flac')
+
+	print(t.name)
